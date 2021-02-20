@@ -5,14 +5,17 @@ const resetButton = document.querySelector('#reset');
 const p1Score = document.querySelector('#p1Score');
 const p2Score = document.querySelector('#p2Score');
 
+const playTo = document.querySelector('#playTo');
+let maxScore = playTo.value;
+
 p1Button.addEventListener('click', () => {
-    if (p1Score.innerText < 5 && p2Score.innerText < 5) {
+    if (p1Score.innerText < maxScore && p2Score.innerText < maxScore) {
         p1Score.innerText++
     };
 })
 
 p2Button.addEventListener('click', () => {
-    if (p1Score.innerText < 5 && p2Score.innerText < 5) {
+    if (p1Score.innerText < maxScore && p2Score.innerText < maxScore) {
         p2Score.innerText++
     };
 })
@@ -20,4 +23,8 @@ p2Button.addEventListener('click', () => {
 resetButton.addEventListener('click', () => {
     p1Score.innerText = 0;
     p2Score.innerText = 0;
+})
+
+playTo.addEventListener('change', () => {
+    maxScore = playTo.value;
 })
