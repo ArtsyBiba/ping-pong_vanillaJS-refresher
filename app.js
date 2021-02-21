@@ -9,30 +9,25 @@ const playTo = document.querySelector('#playTo');
 let maxScore = playTo.value;
 
 p1Button.addEventListener('click', () => {
-    if (p1Score.innerText < maxScore && p2Score.innerText < maxScore) {
-        p1Score.innerText++
-    };
-
-    if (p1Score.innerText == maxScore) {
-        p1Score.classList.add('has-text-success');
-        p2Score.classList.add('has-text-danger');
-        p1Button.disabled = true;
-        p2Button.disabled = true;
-    }
+    addButtonListener(p1Score, p2Score);
 })
 
 p2Button.addEventListener('click', () => {
-    if (p1Score.innerText < maxScore && p2Score.innerText < maxScore) {
-        p2Score.innerText++
+    addButtonListener(p2Score, p1Score);
+})
+
+const addButtonListener = (player, opponent) => {
+    if (player.innerText < maxScore && opponent.innerText < maxScore) {
+        player.innerText++
     };
 
-    if (p2Score.innerText == maxScore) {
-        p1Score.classList.add('has-text-danger');
-        p2Score.classList.add('has-text-success');
+    if (player.innerText == maxScore) {
+        player.classList.add('has-text-success');
+        opponent.classList.add('has-text-danger');
         p1Button.disabled = true;
         p2Button.disabled = true;
     }
-})
+};
 
 resetButton.addEventListener('click', () => {
     p1Score.innerText = 0;
