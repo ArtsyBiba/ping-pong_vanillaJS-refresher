@@ -14,8 +14,10 @@ p1Button.addEventListener('click', () => {
     };
 
     if (p1Score.innerText == maxScore) {
-        p1Score.classList.add('winner');
-        p2Score.classList.add('loser');
+        p1Score.classList.add('has-text-success');
+        p2Score.classList.add('has-text-danger');
+        p1Button.disabled = true;
+        p2Button.disabled = true;
     }
 })
 
@@ -25,21 +27,25 @@ p2Button.addEventListener('click', () => {
     };
 
     if (p2Score.innerText == maxScore) {
-        p1Score.classList.add('loser');
-        p2Score.classList.add('winner');
+        p1Score.classList.add('has-text-danger');
+        p2Score.classList.add('has-text-success');
+        p1Button.disabled = true;
+        p2Button.disabled = true;
     }
 })
 
 resetButton.addEventListener('click', () => {
     p1Score.innerText = 0;
     p2Score.innerText = 0;
+    p1Button.disabled = false;
+    p2Button.disabled = false;
 
-    p1Score.classList == 'winner' 
-        ? p1Score.classList.remove('winner')
-        : p1Score.classList.remove('loser');
-    p2Score.classList == 'winner' 
-        ? p2Score.classList.remove('winner')
-        : p2Score.classList.remove('loser');
+    p1Score.classList == 'has-text-success' 
+        ? p1Score.classList.remove('has-text-success')
+        : p1Score.classList.remove('has-text-danger');
+    p2Score.classList == 'has-text-success' 
+        ? p2Score.classList.remove('has-text-success')
+        : p2Score.classList.remove('has-text-danger');
 })
 
 playTo.addEventListener('change', () => {
